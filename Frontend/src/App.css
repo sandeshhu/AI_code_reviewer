@@ -1,0 +1,309 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  width: 100%;
+}
+
+main {
+  height: 100%;
+  width: 100%;
+  padding: 1.5rem;
+  gap: 1rem;
+  display: flex;
+}
+
+.left,
+.right {
+  height: 100%;
+  flex-basis: 50%;
+  border-radius: 0.7rem;
+}
+
+main .left {
+  background-color: #2e2e2e; /* Dark gray background for a futuristic look */
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.left .code {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.left .code pre {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  border-radius: 0.7rem;
+  background-color: #1e1e1e; /* Slightly darker gray for code background */
+  color: #ffffff; /* White text for high contrast */
+}
+
+.left .code pre code {
+  flex-grow: 1;
+  width: 100%;
+}
+
+main .left .review {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  background-color: #00a8e8; /* Bright cyan for a futuristic accent */
+  color: #ffffff; /* White text for high contrast */
+  padding: 0.7rem;
+  border-radius: 0.7rem;
+  font-weight: 200;
+  cursor: pointer;
+  user-select: none;
+}
+
+.right {
+  background-color: #1e1e1e; /* Slightly darker gray for right panel background */
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  overflow: auto;
+  color: #ffffff; /* White text for high contrast */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Add the new CSS for the CodePen example */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  background: #333;
+}
+
+.box {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: #444;
+  margin: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.5s;
+}
+
+.box:hover {
+  transform: translateY(-20px);
+}
+
+.box .content {
+  padding: 20px;
+  text-align: center;
+}
+
+.box .content h2 {
+  position: absolute;
+  top: -10px;
+  right: 30px;
+  font-size: 8em;
+  color: rgba(255, 255, 255, 0.1);
+  pointer-events: none;
+}
+
+.box .content h3 {
+  font-size: 1.8em;
+  color: #fff;
+  z-index: 1;
+}
+
+.box .content p {
+  font-size: 1em;
+  color: #fff;
+  z-index: 1;
+}
+
+.box .content a {
+  position: relative;
+  display: inline-block;
+  padding: 10px 20px;
+  margin-top: 15px;
+  background: #fff;
+  color: #333;
+  text-decoration: none;
+  font-weight: 400;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.sparkle {
+  position: absolute;
+  font-size: 1.5rem;
+  animation: sparkle-animation 1s ease-out forwards;
+  pointer-events: none;
+  filter: drop-shadow(0 0 10px #84c9f1);
+}
+
+@keyframes sparkle-animation {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate3d(var(--random-x), var(--random-y), var(--random-z))
+      scale(0.5);
+    opacity: 0;
+    filter: drop-shadow(0 0 10px #84c9f1);
+  }
+}
+
+.review {
+  position: relative;
+  padding: 18px 45px;
+  font-size: 1.2rem;
+  background: #bb2020; /* Default background color */
+  color: #fffdef; /* Default text color */
+  border: 2px solid transparent; /* Default border */
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease; /* Smooth transition for hover effects */
+  font-family: Arial, sans-serif;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  overflow: hidden; /* Ensure stars stay within the button */
+}
+
+.review:hover {
+  background: #000000; /* Black background on hover */
+  border: 2px solid #00ffff; /* Neon blue border on hover */
+  color: #00ffff; /* Neon blue text color on hover */
+  text-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff; /* Neon glow effect for text */
+}
+
+#sparkle-button.review:hover {
+  background: #000000; /* Black background on hover */
+  border: 2px solid #00ffff; /* Neon blue border on hover */
+  color: #00ffff; /* Neon blue text color on hover */
+  text-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff; /* Neon glow effect for text */
+}
+
+.star {
+  position: fixed; /* Prevent layout shifts */
+  width: 10px; /* Default size of the star */
+  height: 10px;
+  background: #00ffff; /* Neon blue color */
+  clip-path: polygon(
+    50% 0%,
+    60% 40%,
+    100% 50%,
+    60% 60%,
+    50% 100%,
+    40% 60%,
+    0% 50%,
+    40% 40%
+  ); /* Four-pointed star shape */
+  box-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff; /* Glow effect */
+  animation: star-shatter 1.5s ease-out forwards; /* Animation for shattering effect */
+}
+
+@keyframes star-shatter {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: translate(var(--random-x), var(--random-y)) scale(1.5);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translate(var(--random-x), var(--random-y)) scale(0.5);
+    opacity: 0;
+  }
+}
+
+.emoji-burst {
+  position: fixed; /* Prevent layout shifts */
+  pointer-events: none;
+  width: 30px; /* Adjust size of the PNG */
+  height: 30px;
+  opacity: 0;
+  animation: sparkle-animation 3s ease-out forwards; /* Lasts 3 seconds */
+}
+
+@keyframes sparkle-animation {
+  0% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(var(--random-x), var(--random-y), 0) scale(1.2);
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(var(--random-x), var(--random-y), 0) scale(0.8);
+  }
+}
+
+@media (max-width: 768px) {
+  /* Main container for mobile */
+  main {
+    display: flex;
+    flex-direction: column; /* Stack sections vertically */
+    height: 100vh; /* Full viewport height */
+    width: 100%; /* Full width */
+    padding: 0; /* Remove padding for a clean look */
+    gap: 0; /* Remove gaps between sections */
+    box-sizing: border-box;
+  }
+
+  /* Left section (e.g., input area or button) */
+  .left {
+    height: 20vh; /* Left section takes 20% of the screen height */
+    max-width: 100%; /* Full width */
+    overflow: hidden; /* Prevent overflow */
+    position: relative; /* To position the button inside */
+    background-color: #2e2e2e; /* Background color for the left section */
+    display: flex;
+    align-items: center; /* Center content vertically */
+    justify-content: flex-start; /* Align content to the left */
+    padding: 1rem;
+  }
+
+  /* Right section (e.g., chat or review area) */
+  .right {
+    height: 80vh; /* Right section takes 80% of the screen height */
+    max-width: 100%; /* Full width */
+    overflow-y: auto; /* Allow scrolling for content */
+    background-color: #1e1e1e; /* Background color for the right section */
+    padding: 1rem;
+    box-sizing: border-box;
+  }
+
+  /* Button styling */
+  .review {
+    position: absolute; /* Position the button inside the left section */
+    bottom: 10px; /* Align to the bottom */
+    left: 10px; /* Align to the left */
+    padding: 12px 24px;
+    font-size: 1rem;
+    background: #373737; /* Button background */
+    color: #fffdef; /* Button text color */
+    border: 2px solid transparent;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+  }
+
+  .review:hover {
+    background: #000000; /* Black background on hover */
+    border: 2px solid #00ffff; /* Neon blue border on hover */
+    color: #00ffff; /* Neon blue text color on hover */
+    text-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff; /* Neon glow effect */
+  }
+}
